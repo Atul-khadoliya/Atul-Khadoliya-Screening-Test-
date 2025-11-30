@@ -1,3 +1,4 @@
+
 #include <iostream>
 using namespace std;
 
@@ -6,33 +7,40 @@ public:
     double a, b;
     string op;
 
-    Calculator(double x, double y, string type) {
-        a = x;
-        b = y;
-        op = type;
+    void getInput() {
+        cout << "Enter value of a: ";
+        cin >> a;
+
+        cout << "Enter value of b: ";
+        cin >> b;
+
+        cout << "Enter operation (add / sub / mul / div): ";
+        cin >> op;
     }
 
-    double calculate() {
+    double compute() {
         if (op == "add") return a + b;
         else if (op == "sub") return a - b;
         else if (op == "mul") return a * b;
         else if (op == "div") {
             if (b == 0) {
-                cout << "Error: division by zero!\n";
+                cout << "Error: Division by zero!\n";
                 return 0;
             }
             return a / b;
         }
         else {
-            cout << "Invalid operation!";
+            cout << "Invalid operation!\n";
             return 0;
         }
     }
 };
 
 int main() {
-    Calculator c(10.5, 5.5, "add");
-    cout << "Result: " << c.calculate();
+    Calculator c;
+    c.getInput();
+
+    cout << "Result: " << c.compute() << endl;
+    
     return 0;
 }
-
